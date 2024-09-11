@@ -5,5 +5,6 @@
 Планирую сделать проект полностью сам, на unity, без привлечения сторонних асссетов кроме звуков.
 
 !---Goole translte---!
+
 The jam starts on September 15, 2024. I created the repository in advance, but I am not doing anything regarding the project until September 15, 2024, for the purity of the experiment.
 I plan to make the project entirely myself, using unity, without using third-party assets other than sounds.
