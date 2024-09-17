@@ -16,6 +16,8 @@ public class PlayerMovment : MonoBehaviour
     public bool focusedOnItem;
 
     private Usable currentUsable;
+    [SerializeField]
+    private Pickable currentPickable;
 
     void Start()
     {
@@ -29,6 +31,11 @@ public class PlayerMovment : MonoBehaviour
         {
             focusedOnItem = true;
             currentUsable.Use(this);
+        }
+        if (currentPickable && (TR.position - currentPickable.transform.position).magnitude <= 2f)
+        {
+            currentPickable.TakeItem();
+            currentPickable = null;
         }
         if (!focusedOnItem)
         {
@@ -53,6 +60,22 @@ public class PlayerMovment : MonoBehaviour
         {
             currentUsable = _usable;
             agent.SetDestination(_usable.GetUsePosition());
+        }
+    }
+
+    public void MoveToObject(Pickable _pickable)
+    {
+        if (!focusedOnItem)
+        {
+            currentPickable = _pickable;
+            agent.SetDestination(_pickable.transform.position);
+        }
+        else
+        {
+            if (_pickable.CheckAssotiatetUsable(currentUsable))
+            {
+                _pickable.TakeItem();
+            }
         }
     }
 
