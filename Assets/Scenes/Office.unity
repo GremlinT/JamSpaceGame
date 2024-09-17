@@ -131,6 +131,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17289432}
+  - component: {fileID: 17289434}
+  - component: {fileID: 17289435}
+  - component: {fileID: 17289436}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -154,6 +157,71 @@ Transform:
   - {fileID: 1976481884}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -99.272, z: 0}
+--- !u!114 &17289434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17289431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0ded81d606d674cbe89e7ea3b3b797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: "\u041A\u043B\u044E\u0447 \u043E\u0442 \u043A\u043E\u0441\u043C\u043E\u043B\u0435\u0442\u0430"
+  inventorySystem: {fileID: 177958192}
+  assotiatedUsable: {fileID: 1443168841}
+--- !u!65 &17289435
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17289431}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.091053404, y: 0.050967693, z: 0.15513204}
+  m_Center: {x: -0.00385347, y: 0.0101441145, z: -0.00008619579}
+--- !u!114 &17289436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17289431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 177958190}
+          m_TargetAssemblyTypeName: PlayerMovment, Assembly-CSharp
+          m_MethodName: MoveToObject
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 17289434}
+            m_ObjectArgumentAssemblyTypeName: Pickable, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &84314372
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +454,7 @@ GameObject:
   - component: {fileID: 177958188}
   - component: {fileID: 177958190}
   - component: {fileID: 177958191}
+  - component: {fileID: 177958192}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -447,6 +516,7 @@ MonoBehaviour:
   agent: {fileID: 177958188}
   cam: {fileID: 1396631133}
   focusedOnItem: 0
+  currentPickable: {fileID: 0}
 --- !u!114 &177958191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +530,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPoint: {fileID: 1869213764}
+--- !u!114 &177958192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177958187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7816e2df71f4473408923401f9fba570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &180612201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,6 +3021,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1727435070}
+  - component: {fileID: 1727435072}
+  - component: {fileID: 1727435073}
+  - component: {fileID: 1727435074}
   m_Layer: 0
   m_Name: Hat
   m_TagString: Untagged
@@ -2963,6 +3048,71 @@ Transform:
   - {fileID: 1859513310}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 46.012}
+--- !u!114 &1727435072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727435069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0ded81d606d674cbe89e7ea3b3b797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: "\u0428\u043B\u044F\u043F\u0430 \u0434\u0435\u0442\u0435\u043A\u0442\u0438\u0432\u0430"
+  inventorySystem: {fileID: 177958192}
+  assotiatedUsable: {fileID: 0}
+--- !u!65 &1727435073
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727435069}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.74412036, y: 0.24243721, z: 0.7209532}
+  m_Center: {x: 0.00018353114, y: 0.09193398, z: 0.0024477243}
+--- !u!114 &1727435074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727435069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 177958190}
+          m_TargetAssemblyTypeName: PlayerMovment, Assembly-CSharp
+          m_MethodName: MoveToObject
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1727435072}
+            m_ObjectArgumentAssemblyTypeName: Pickable, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1821192915
 GameObject:
   m_ObjectHideFlags: 0
