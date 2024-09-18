@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Pickable : MonoBehaviour
 {
-    public string itemName;
+    public int itemID;
+    [SerializeField]
+    private string itemName;
     [SerializeField]
     InventorySystem inventorySystem;
 
@@ -56,6 +58,11 @@ public class Pickable : MonoBehaviour
         itemTR.SetParent(wearingPlace);
         itemTR.position = wearingPlace.position;
         itemTR.rotation = wearingPlace.rotation;
-
     }
+
+    public string ItemInformation()
+    {
+        return itemName;
+    }
+
 }

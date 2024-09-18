@@ -15,7 +15,7 @@ public class InventorySystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             OpenInventory();
         }
@@ -31,8 +31,19 @@ public class InventorySystem : MonoBehaviour
         Debug.Log("В инвентаре: ");
         foreach (Pickable _item in itemsInInventory)
         {
-            Debug.Log(_item.itemName);
+            Debug.Log(_item.ItemInformation());
         }
-        
+    }
+
+    public bool CheckInInventory(int _ID)
+    {
+        foreach (var item in itemsInInventory)
+        {
+            if (item.itemID == _ID)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

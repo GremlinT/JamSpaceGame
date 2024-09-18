@@ -39,6 +39,7 @@ public class PlayerMovment : MonoBehaviour
                 focusedOnItem = true;
                 camTargetAtPlayer = false;
                 currentUsable.Use(this);
+                agent.isStopped = true;
             }
         }
         if (currentPickable && (TR.position - currentPickable.transform.position).magnitude <= 2f)
@@ -104,5 +105,6 @@ public class PlayerMovment : MonoBehaviour
     {
         focusedOnItem = false;
         currentUsable = null;
+        agent.isStopped = false;
     }
 }
