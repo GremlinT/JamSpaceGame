@@ -10,14 +10,20 @@ public class AutoDoor : MonoBehaviour
     PlayerMovment player;
     [SerializeField]
     Transform doorModel;
+    [SerializeField]
+    float doorSpeed;
 
     private bool isClosed;
+
+    private Vector3 openPosition, closePosition;
 
     // Start is called before the first frame update
     void Start()
     {
         TR = transform;
         isClosed = true;
+        openPosition = TR.position + TR.right * 3 + TR.up * 2;
+        closePosition = TR.position + TR.up * 2;
     }
 
     // Update is called once per frame
@@ -37,9 +43,8 @@ public class AutoDoor : MonoBehaviour
     {
         if (isClosed)
         {
-            doorModel.Translate(doorModel.right * Time.deltaTime);
-            Debug.Log((doorModel.position - (TR.up * 2.5f)).magnitude);
-            if ((doorModel.position - (TR.right * 3 + TR.up * 2.5f)).magnitude <= 0.01) isClosed = false;
+            doorModel.position = Vector3.Lerp(doorModel.position, openPosition, Time.deltaTime * doorSpeed);
+            if ((doorModel.position - openPosition).magnitude <= 0.05) isClosed = false;
         }
     }
 
@@ -47,8 +52,8 @@ public class AutoDoor : MonoBehaviour
     {
         if (!isClosed)
         {
-            doorModel.Translate(-doorModel.right * Time.deltaTime);
-            if ((doorModel.position - TR.right).magnitude <= 0.01) isClosed = true;
+            doorModel.position = Vector3.Lerp(doorModel.position, closePosition, Time.deltaTime * doorSpeed);
+            if ((doorModel.position - closePosition).magnitude <= 0.05) isClosed = true;
         }
     }
 }

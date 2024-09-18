@@ -2516,6 +2516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 177958190}
   doorModel: {fileID: 1465940300}
+  doorSpeed: 4
 --- !u!1 &1396631128
 GameObject:
   m_ObjectHideFlags: 0
