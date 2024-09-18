@@ -8,8 +8,6 @@ public class CameraScript : MonoBehaviour
     [SerializeField]
     private CameraTargetScript cameraTarget;
 
-    private Transform CamTargetTR;
-
     void Start()
     {
         TR = transform;

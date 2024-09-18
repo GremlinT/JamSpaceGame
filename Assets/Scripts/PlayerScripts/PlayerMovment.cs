@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class PlayerMovment : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PlayerMovment : MonoBehaviour
     NavMeshAgent agent;
     [SerializeField]
     CameraScript cam;
+
+    private CameraTargetScript cts;
+    private bool camTargetAtPlayer;
 
     Transform TR;
 
@@ -23,23 +27,29 @@ public class PlayerMovment : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         TR = transform;
+        cts = GetComponent<CameraTargetScript>();
     }
 
     void Update()
     {
-        if (currentUsable && (TR.position - currentUsable.GetUsePosition()).magnitude <= 0.1f)
+        if (!focusedOnItem)
         {
-            focusedOnItem = true;
-            currentUsable.Use(this);
+            if (currentUsable && (TR.position - currentUsable.GetUsePosition()).magnitude <= 0.1f)
+            {
+                focusedOnItem = true;
+                camTargetAtPlayer = false;
+                currentUsable.Use(this);
+            }
         }
         if (currentPickable && (TR.position - currentPickable.transform.position).magnitude <= 2f)
         {
             currentPickable.TakeItem();
             currentPickable = null;
         }
-        if (!focusedOnItem)
+        if (!focusedOnItem && !camTargetAtPlayer)
         {
-            cam.SetCameraTarget(GetComponent<CameraTargetScript>());
+            cam.SetCameraTarget(cts);
+            camTargetAtPlayer = true;
         }
     }
 
@@ -58,8 +68,19 @@ public class PlayerMovment : MonoBehaviour
     {
         if (!focusedOnItem)
         {
-            currentUsable = _usable;
-            agent.SetDestination(_usable.GetUsePosition());
+            if (_usable.HasUsePosition())
+            {
+                currentUsable = _usable;
+                agent.SetDestination(_usable.GetUsePosition());
+            }
+            else Debug.Log("no focus point");
+        }
+        else
+        {
+            if (_usable.CheckAssotiatetUsable(currentUsable))
+            {
+                _usable.Use(this);
+            }
         }
     }
 
