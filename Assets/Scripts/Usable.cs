@@ -9,7 +9,15 @@ public class Usable : MonoBehaviour
     [SerializeField]
     CameraScript cam;
 
+    [SerializeField]
+    UseType useType;
+
+    [SerializeField]
+    Usable assotiatedUsable;
+
     private bool isUsing;
+    [SerializeField]
+    private bool stopUsingAccesable;
 
     private PlayerMovment player;
 
@@ -18,25 +26,38 @@ public class Usable : MonoBehaviour
     {
         
     }
+    
+    public void SetStopUsingAccesable(bool setting)
+    {
+        stopUsingAccesable = setting;
+    }
+    public void SetAssotiatedUsingAccesable(bool setting)
+    {
+        if (assotiatedUsable)
+        {
+            assotiatedUsable.SetStopUsingAccesable(setting);
+        }
+    }
 
+    public bool CheckAssotiatetUsable(Usable _usable)
+    {
+        if (_usable == assotiatedUsable)
+        {
+            return true;
+        }
+        else return false;
+    }
     // Update is called once per frame
     void Update()
     {
-        if (isUsing)
-        {
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                isUsing = false;
-                player.StopFocusing();
-            }
-        }
+        StopUsingByKey();
     }
 
     public void Use(PlayerMovment _player)
     {
         isUsing = true;
         player = _player;
-        CameraFocusing();
+        useType.Use(cam);
     }
 
     public Vector3 GetUsePosition()
@@ -44,11 +65,23 @@ public class Usable : MonoBehaviour
         return pointForUse.position;
     }
 
-    private void CameraFocusing()
+    public bool HasUsePosition()
     {
-        if (GetComponent<CameraTargetScript>())
+        if (pointForUse) return true;
+        else return false;
+    }
+
+    private void StopUsingByKey()
+    {
+        if (Input.GetKey(KeyCode.Escape) && stopUsingAccesable) StopUsing();
+    }
+
+    public void StopUsing()
+    {
+        if (isUsing)
         {
-            cam.SetCameraTarget(GetComponent<CameraTargetScript>());
+            isUsing = false;
+            player.StopFocusing();
         }
     }
 }

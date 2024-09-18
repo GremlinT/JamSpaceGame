@@ -10,6 +10,11 @@ public class Pickable : MonoBehaviour
 
     [SerializeField]
     private Usable assotiatedUsable;
+
+    [SerializeField]
+    private bool wearing;
+    [SerializeField]
+    Transform wearingPlace;
     
     // Start is called before the first frame update
     void Start()
@@ -26,7 +31,14 @@ public class Pickable : MonoBehaviour
     public void TakeItem()
     {
         inventorySystem.AddItemToInventory(this);
-        this.gameObject.SetActive(false);
+        if (!wearing)
+        {
+            this.gameObject.SetActive(false);
+        }
+        else
+        {
+            Wear();
+        }
     }
 
     public bool CheckAssotiatetUsable(Usable _usable)
@@ -36,5 +48,14 @@ public class Pickable : MonoBehaviour
             return true;
         }
         else return false;
+    }
+
+    private void Wear()
+    {
+        Transform itemTR = transform;
+        itemTR.SetParent(wearingPlace);
+        itemTR.position = wearingPlace.position;
+        itemTR.rotation = wearingPlace.rotation;
+
     }
 }
