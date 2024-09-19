@@ -28,6 +28,7 @@ public class PlayerMovment : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         TR = transform;
         cts = GetComponent<CameraTargetScript>();
+        DontDestroyOnLoad(gameObject);
     }
 
     void Update()
@@ -36,10 +37,11 @@ public class PlayerMovment : MonoBehaviour
         {
             if (currentUsable && (TR.position - currentUsable.GetUsePosition()).magnitude <= 0.1f)
             {
+                Debug.Log("1");
                 focusedOnItem = true;
                 camTargetAtPlayer = false;
                 currentUsable.Use(this);
-                if (agent.isActiveAndEnabled) agent.isStopped = true;
+                if (agent.enabled) agent.isStopped = true;
             }
         }
         if (currentPickable && (TR.position - currentPickable.transform.position).magnitude <= 2f)
@@ -56,6 +58,7 @@ public class PlayerMovment : MonoBehaviour
 
     public void MoveToPointer(BaseEventData _pointer) 
     {
+        Debug.Log(agent.isStopped);
         if (!focusedOnItem)
         {
             currentUsable = null;
@@ -103,6 +106,7 @@ public class PlayerMovment : MonoBehaviour
 
     public void StopFocusing()
     {
+        Debug.Log("2");
         focusedOnItem = false;
         currentUsable = null;
         agent.isStopped = false;
