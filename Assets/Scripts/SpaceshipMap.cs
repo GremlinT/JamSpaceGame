@@ -27,11 +27,6 @@ public class SpaceshipMap : MonoBehaviour
 
     void Update()
     {
-
-    }
-
-    private void FixedUpdate()
-    {
         if (isActive)
         {
             UpdateIconPositions();
@@ -40,6 +35,11 @@ public class SpaceshipMap : MonoBehaviour
                 TargetOnMapMove();
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
     public void ActivateMap()
@@ -108,6 +108,10 @@ public class SpaceshipMap : MonoBehaviour
                     targetTR.position = spaceshipTR.position;
                 }
             }
+        }
+        else
+        {
+            targetTR.position = spaceshipTR.position;
         }
     }
 

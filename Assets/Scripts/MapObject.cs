@@ -7,7 +7,7 @@ public class MapObject : MonoBehaviour
     [SerializeField]
     private GameObject mapObjectPref;
     [SerializeField]
-    private Transform landingPosition;
+    private Transform nearObjectPosition, landingPosition, takeOffPosition;
 
     [SerializeField]
     Transform TR;
@@ -28,12 +28,17 @@ public class MapObject : MonoBehaviour
     public GameObject MakeMapIcon(Transform _map)
     {
         GameObject _icon = Instantiate(mapObjectPref, _map);
-        _icon.GetComponent<MapIconScript>().SetLandingPosition(landingPosition.position);
+        _icon.GetComponent<MapIconScript>().SetPositions(nearObjectPosition.position, landingPosition);
         return _icon;
     }
 
     public Vector3 ObjectPosition()
     {
         return TR.position;
+    }
+
+    public Transform GetTakeOffPosition()
+    {
+        return takeOffPosition;
     }
 }

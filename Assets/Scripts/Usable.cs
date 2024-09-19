@@ -83,6 +83,7 @@ public class Usable : MonoBehaviour
             isUsing = false;
             player.StartUseNavMesh();
             player.StopFocusing();
+            player.transform.SetParent(null);
         }
     }
 }

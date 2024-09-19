@@ -12,6 +12,7 @@ public class CameraScript : MonoBehaviour
     {
         TR = transform;
         SetCameraTarget(cameraTarget);
+        DontDestroyOnLoad(gameObject);
     }
 
     void Update()
