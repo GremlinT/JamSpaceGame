@@ -27,17 +27,22 @@ public class Phone : UseType
 
     public override void Use(CameraScript _cam)
     {
-        incomingCall = false;
-        phoneProjection.SetActive(true);
-        phoneProjection.transform.LookAt(playerHead);
-        usable.SetAssotiatedUsingAccesable(stopUsingAccesable);
-        StartCoroutine(PhoneDialog(dialogTexts));
+        if (incomingCall)
+        {
+            incomingCall = false;
+            stopUsingAccesable = false;
+            phoneProjection.SetActive(true);
+            phoneProjection.transform.LookAt(playerHead);
+            usable.SetAssotiatedUsingAccesable(stopUsingAccesable);
+            usable.SetStopUsingAccesable(stopUsingAccesable);
+            StartCoroutine(PhoneDialog(dialogTexts));
+        }
     }
     
     void Start()
     {
         SetUsable();
-        stopUsingAccesable = false;
+        stopUsingAccesable = true;
         usable.SetStopUsingAccesable(stopUsingAccesable);
         waitForCall = true;
     }
