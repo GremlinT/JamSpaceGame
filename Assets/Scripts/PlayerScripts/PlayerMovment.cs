@@ -39,7 +39,7 @@ public class PlayerMovment : MonoBehaviour
                 focusedOnItem = true;
                 camTargetAtPlayer = false;
                 currentUsable.Use(this);
-                agent.isStopped = true;
+                if (agent.isActiveAndEnabled) agent.isStopped = true;
             }
         }
         if (currentPickable && (TR.position - currentPickable.transform.position).magnitude <= 2f)
@@ -106,5 +106,19 @@ public class PlayerMovment : MonoBehaviour
         focusedOnItem = false;
         currentUsable = null;
         agent.isStopped = false;
+    }
+
+    public void StopUseNavMesh()
+    {
+        agent.isStopped = true;
+        agent.enabled = false;
+    }
+    public void StartUseNavMesh()
+    {
+        if (!agent.enabled)
+        {
+            agent.enabled = true;
+            agent.isStopped = false;
+        }
     }
 }

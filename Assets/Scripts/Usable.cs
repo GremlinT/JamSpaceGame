@@ -81,6 +81,7 @@ public class Usable : MonoBehaviour
         if (isUsing)
         {
             isUsing = false;
+            player.StartUseNavMesh();
             player.StopFocusing();
         }
     }
