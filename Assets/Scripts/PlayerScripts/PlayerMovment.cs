@@ -15,6 +15,9 @@ public class PlayerMovment : MonoBehaviour
     private CameraTargetScript cts;
     private bool camTargetAtPlayer;
 
+    [SerializeField]
+    Animator anim;
+
     Transform TR;
 
     public bool focusedOnItem;
@@ -33,11 +36,18 @@ public class PlayerMovment : MonoBehaviour
 
     void Update()
     {
+        if (agent.velocity != Vector3.zero)
+        {
+            anim.SetBool("isMove", true);
+        }
+        else
+        {
+            anim.SetBool("isMove", false);
+        }
         if (!focusedOnItem)
         {
             if (currentUsable && (TR.position - currentUsable.GetUsePosition()).magnitude <= 0.1f)
             {
-                Debug.Log("1");
                 focusedOnItem = true;
                 camTargetAtPlayer = false;
                 currentUsable.Use(this);
@@ -58,7 +68,6 @@ public class PlayerMovment : MonoBehaviour
 
     public void MoveToPointer(BaseEventData _pointer) 
     {
-        Debug.Log(agent.isStopped);
         if (!focusedOnItem)
         {
             currentUsable = null;
@@ -106,7 +115,6 @@ public class PlayerMovment : MonoBehaviour
 
     public void StopFocusing()
     {
-        Debug.Log("2");
         focusedOnItem = false;
         currentUsable = null;
         agent.isStopped = false;
