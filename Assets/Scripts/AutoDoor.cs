@@ -13,6 +13,10 @@ public class AutoDoor : MonoBehaviour
     [SerializeField]
     float doorSpeed;
 
+    [SerializeField]
+    Transform openPositionTR, closePositionTR;
+
+
     private bool isClosed;
 
     private Vector3 openPosition, closePosition;
@@ -22,8 +26,8 @@ public class AutoDoor : MonoBehaviour
     {
         TR = transform;
         isClosed = true;
-        openPosition = TR.position + TR.right * 3 + TR.up * 2;
-        closePosition = TR.position + TR.up * 2;
+        openPosition = openPositionTR.position;
+        closePosition = closePositionTR.position;
         player = FindObjectOfType<PlayerMovment>();
     }
 
