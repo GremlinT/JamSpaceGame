@@ -231,9 +231,13 @@ public class Spaceship : UseType
     {
         return isMoving;
     }
-
+    public bool IsActive()
+    {
+        return isActive;
+    }
     public void Jump()
     {
+        map.DeactivateMap();
         SceneManager.LoadScene(taregetSceneNomber);
     }
 }

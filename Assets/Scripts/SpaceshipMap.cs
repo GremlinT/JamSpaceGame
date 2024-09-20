@@ -78,8 +78,29 @@ public class SpaceshipMap : MonoBehaviour
 
     public void TargetOnMapActivate()
     {
-        targetPlaceIcon.SetActive(true);
-        isMapTargetinActive = true;
+        if (!isActive)
+        {
+            if (spaceship.IsActive())
+            {
+                ActivateMap();
+                targetPlaceIcon.SetActive(true);
+                isMapTargetinActive = true;
+            }
+        }
+        else
+        {
+            if (isMapTargetinActive)
+            {
+                targetPlaceIcon.SetActive(false);
+                isMapTargetinActive = false;
+            }
+            else
+            {
+                targetPlaceIcon.SetActive(true);
+                isMapTargetinActive = true;
+            }
+        }
+
         
     }
 

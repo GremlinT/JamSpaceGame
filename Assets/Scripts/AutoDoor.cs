@@ -24,6 +24,7 @@ public class AutoDoor : MonoBehaviour
         isClosed = true;
         openPosition = TR.position + TR.right * 3 + TR.up * 2;
         closePosition = TR.position + TR.up * 2;
+        player = FindObjectOfType<PlayerMovment>();
     }
 
     // Update is called once per frame
