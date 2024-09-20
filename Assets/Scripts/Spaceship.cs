@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class Spaceship : UseType
 {
@@ -14,8 +15,9 @@ public class Spaceship : UseType
     [SerializeField]
     Transform playerPlace;
     [SerializeField]
-    private bool isActive, isLanding, isMoving, isTakeOff, isMoveToLanding;
+    private bool isActive, isLanding, isMoving, isTakeOff, isMoveToLanding, isRotating, isSpecialRotation;
     private Vector3 moveTargetPoint;
+    private Quaternion specialRotation;
 
     [SerializeField]
     SpaceshipMap map;
@@ -26,7 +28,11 @@ public class Spaceship : UseType
     float maxSpeed;
 
     [SerializeField]
-    private Transform takeOffPoint;
+    private Transform takeOffPoint, landingPoint;
+
+    [SerializeField]
+    int taregetSceneNomber;
+
 
     public override void Use(CameraScript _cam)
     {
@@ -40,7 +46,7 @@ public class Spaceship : UseType
         else
         {
             Debug.Log("Ключей нет");
-            usable.StopUsing();
+            //usable.StopUsing();
         }
     }
 
@@ -50,6 +56,7 @@ public class Spaceship : UseType
         SetUsable();
         stopUsingAccesable = true;
         usable.SetStopUsingAccesable(stopUsingAccesable);
+        DontDestroyOnLoad(gameObject);
     }
 
     void Update()
@@ -65,6 +72,10 @@ public class Spaceship : UseType
             {
                 TakeOff();
             }
+            if (isMoveToLanding)
+            {
+                MovingToLanding();
+            }
         }
     }
 
@@ -77,6 +88,7 @@ public class Spaceship : UseType
                 if (Physics.Raycast(TR.position, -TR.up, out hitInfo, 20f))
                 {
                     moveTargetPoint = hitInfo.point;
+                    takeOffPoint = hitInfo.collider.gameObject.GetComponent<landingBay>().GetTakeOffPosition();
                     isLanding = true;
                 }
                 break;
@@ -92,38 +104,74 @@ public class Spaceship : UseType
 
     public void AutoTakeOff()
     {
-        isTakeOff = true;
+        if (takeOffPoint != null && isActive)
+        {
+            isTakeOff = true;
+        }
     }
     public void AutoLanding()
     {
-        isMoveToLanding = true;
+        if (landingPoint != null && isActive)
+        {
+            isMoveToLanding = true;
+        }
     }
 
     private void MoveToPoint()
     {
-        if (Vector3.Distance(TR.position, moveTargetPoint) > 100f)
+        RotateToPointDirection();
+        if (!isRotating)
         {
-            TR.position += (moveTargetPoint - TR.position).normalized * Time.deltaTime * maxSpeed;
-            if (!isMoving) isMoving = true;
+            if (Vector3.Distance(TR.position, moveTargetPoint) > 100f)
+            {
+                TR.position += (moveTargetPoint - TR.position).normalized * Time.deltaTime * maxSpeed;
+                if (!isMoving) isMoving = true;
+            }
+            else if (Vector3.Distance(TR.position, moveTargetPoint) > 0.1f)
+            {
+                TR.position = Vector3.Lerp(TR.position, moveTargetPoint, Time.deltaTime);
+                if (!isMoving) isMoving = true;
+            }
+            else
+            {
+                isMoving = false;
+            }
         }
-        else if (Vector3.Distance(TR.position, moveTargetPoint) > 0.1f)
+        if (isSpecialRotation && !isMoving && !isRotating)
         {
-            TR.position = Vector3.Lerp(TR.position, moveTargetPoint, Time.deltaTime);
-            if (!isMoving) isMoving = true;
+            RotateToSpecialRotation();
+        }
+    }
+
+    private void RotateToSpecialRotation()
+    {
+        if (Quaternion.Angle(TR.rotation, specialRotation) > 1f)
+        {
+            TR.rotation = Quaternion.Lerp(TR.rotation, specialRotation, Time.deltaTime);
         }
         else
         {
-            isMoving = false;
+            isSpecialRotation = false;
         }
     }
 
-    public void MoveToPointOnMap(BaseEventData _pointer)
+    private void RotateToPointDirection()
     {
-        Debug.Log(_pointer.selectedObject.name);
-        //Vector3 targetPosition = _pointer.selectedObject.transform.position;
-        //moveTargetPoint = targetPosition;
+        if (Vector3.Distance(TR.position, moveTargetPoint) > 5f)
+        {
+            if (Vector3.Angle(TR.forward, moveTargetPoint - TR.position) > 1f)
+            {
+                if (!isRotating) isRotating = true;
+                Vector3 targetVector = (moveTargetPoint - TR.position).normalized;
+                TR.rotation = Quaternion.Lerp(TR.rotation, Quaternion.LookRotation(targetVector), Time.deltaTime);
+            }
+            else
+            {
+                isRotating = false;
+            }
+        }
     }
-
+    
     private void Landing()
     {
         if (!isMoving)
@@ -140,13 +188,27 @@ public class Spaceship : UseType
     {
         if (!isMoving)
         {
-
+            if (Vector3.Distance(TR.position, landingPoint.position) < 0.1 && !isRotating)
+            {
+                landingPoint = null;
+                isMoveToLanding = false;
+            }
+            else
+            {
+                if (moveTargetPoint != landingPoint.position) moveTargetPoint = landingPoint.position;
+                if (specialRotation != landingPoint.rotation) specialRotation = landingPoint.rotation;
+                if (!isSpecialRotation) isSpecialRotation = true;
+            }
         }
     }
 
     public void SetMoveTargetPoint(Vector3 _point)
     {
         if (!isMoving) moveTargetPoint = _point;
+    }
+    public void SetLandingPosition(Transform _position)
+    {
+        landingPoint = _position;
     }
 
     private void TakeOff()
@@ -168,5 +230,14 @@ public class Spaceship : UseType
     public bool IsMoving()
     {
         return isMoving;
+    }
+    public bool IsActive()
+    {
+        return isActive;
+    }
+    public void Jump()
+    {
+        map.DeactivateMap();
+        SceneManager.LoadScene(taregetSceneNomber);
     }
 }
