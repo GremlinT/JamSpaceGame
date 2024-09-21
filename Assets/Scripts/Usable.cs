@@ -6,7 +6,7 @@ public class Usable : MonoBehaviour
 {
     [SerializeField]
     Transform pointForUse;
-    [SerializeField]
+
     CameraScript cam;
 
     [SerializeField]
@@ -24,7 +24,7 @@ public class Usable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        cam = FindObjectOfType<CameraScript>(); 
     }
     
     public void SetStopUsingAccesable(bool setting)
@@ -47,7 +47,7 @@ public class Usable : MonoBehaviour
         }
         else return false;
     }
-    // Update is called once per frame
+
     void Update()
     {
         StopUsingByKey();

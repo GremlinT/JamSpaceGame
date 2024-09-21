@@ -33,6 +33,14 @@ public class Spaceship : UseType
     [SerializeField]
     int taregetSceneNomber;
 
+    [SerializeField]
+    Material buttonEnabledMat, buttonDisabledMat;
+
+    [SerializeField]
+    Renderer OnOffButton, AutoTakeOffButton, AutoLandingButton, MapButton, JumpButton;
+
+    float distFromZero;
+
 
     public override void Use(CameraScript _cam)
     {
@@ -57,12 +65,19 @@ public class Spaceship : UseType
         stopUsingAccesable = true;
         usable.SetStopUsingAccesable(stopUsingAccesable);
         DontDestroyOnLoad(gameObject);
+        OnOffButton.material = buttonEnabledMat;
+        AutoTakeOffButton.material = buttonDisabledMat;
+        AutoLandingButton.material = buttonDisabledMat;
+        MapButton.material = buttonDisabledMat;
+        JumpButton.material = buttonDisabledMat;
     }
 
     void Update()
     {
         if (isActive)
         {
+            distFromZero = Vector3.Distance(Vector3.zero, TR.position);
+            ButtonMaterialChangeUpdate();
             MoveToPoint();
             if (isLanding)
             {
@@ -79,6 +94,10 @@ public class Spaceship : UseType
         }
     }
 
+    public void SetTargetScene(int _index)
+    {
+        taregetSceneNomber = _index;
+    }
     public void TurnSpaceShipOnOff()
     {
         switch (isActive)
@@ -90,6 +109,10 @@ public class Spaceship : UseType
                     moveTargetPoint = hitInfo.point;
                     takeOffPoint = hitInfo.collider.gameObject.GetComponent<landingBay>().GetTakeOffPosition();
                     isLanding = true;
+                }
+                else
+                {
+                    Debug.Log("No place for landing");
                 }
                 break;
             case false:
@@ -237,7 +260,38 @@ public class Spaceship : UseType
     }
     public void Jump()
     {
-        map.DeactivateMap();
-        SceneManager.LoadScene(taregetSceneNomber);
+        if (isActive && distFromZero > 300f)
+        {
+            map.DeactivateMap();
+            SceneManager.LoadScene(taregetSceneNomber);
+        }
+    }
+
+    private void ButtonMaterialChangeUpdate()
+    {
+        if (isActive && !isMoving)
+        {
+            if (takeOffPoint != null)
+            {
+                AutoTakeOffButton.material = buttonEnabledMat;
+            }
+            if (landingPoint != null)
+            {
+                AutoLandingButton.material = buttonEnabledMat;
+            }
+            if (distFromZero > 300f)
+            {
+                JumpButton.material = buttonEnabledMat;
+            }
+            MapButton.material = buttonEnabledMat;
+        }
+        else
+        {
+            OnOffButton.material = buttonEnabledMat;
+            AutoTakeOffButton.material = buttonDisabledMat;
+            AutoLandingButton.material = buttonDisabledMat;
+            MapButton.material = buttonDisabledMat;
+            JumpButton.material = buttonDisabledMat;
+        }
     }
 }

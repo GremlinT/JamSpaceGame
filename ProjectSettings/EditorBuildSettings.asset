@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cafe.unity
     guid: c131bc4e143451e42b7beae3c7a24de0
+  - enabled: 1
+    path: Assets/Scenes/CatShow.unity
+    guid: 98a52b880a492b940b5f58199f4ebd4e
+  - enabled: 1
+    path: Assets/Scenes/Hotel.unity
+    guid: c9049dd975be3114f88a27e15e7863a9
   m_configObjects: {}

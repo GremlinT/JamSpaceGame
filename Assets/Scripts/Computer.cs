@@ -9,13 +9,31 @@ public class Computer : UseType
 
     private bool isACtive, needCheckInformation;
 
+    private bool hasEmail, openEmail;
+
+    Material monitorMaterial, newMonitorMaterial;
+
+    Texture hasMailTexture, openMailTexture;
+
+    [SerializeField]
+    Pickable catPhoto;
+
     public override void Use(CameraScript _cam)
     {
+        
         if (!isACtive)
         {
             isACtive = true;
             monitor.SetActive(true);
             keyboard.SetActive(true);
+            /*if (Storyline.hasFirstMission)
+            {
+                monitorMaterial.SetTexture("_MainTex", hasMailTexture);
+            }
+            if (Storyline.openMail)
+            {
+                monitorMaterial.SetTexture("_MainTex", openMailTexture);
+            }*/
         }
         else
         {
@@ -30,6 +48,9 @@ public class Computer : UseType
     {
         isACtive = false;
         needCheckInformation = true;
+        monitorMaterial = monitor.GetComponent<Renderer>().material = Resources.Load<Material>("Materials/MonitorMaterial") as Material;
+        hasMailTexture = Resources.Load<Texture>("Textures/monitorWhisMail") as Texture;
+        openMailTexture = Resources.Load<Texture>("Textures/monitorWhisOpenMail") as Texture;
     }
 
     void Update()
@@ -42,6 +63,11 @@ public class Computer : UseType
         if (Storyline.hasFirstMission)
         {
             monitorButtons.SetActive(true);
+            if (!hasEmail)
+            {
+                monitorMaterial.SetTexture("_MainTex", hasMailTexture);
+                hasEmail = true;
+            }
         }
         else if (Storyline.copyPhoto)
         {
@@ -58,12 +84,12 @@ public class Computer : UseType
     {
         if (!Storyline.openMail)
         {
-            Debug.Log("Open mail");
+            monitorMaterial.SetTexture("_MainTex", openMailTexture);
             Storyline.openMail = true;
         }
         else if (!Storyline.copyPhoto)
         {
-            Debug.Log("Copying photo");
+            FindObjectOfType<InventorySystem>().AddItemToInventory(catPhoto);
             Storyline.copyPhoto = true;
         }
     }
