@@ -17,6 +17,8 @@ public class Pickable : MonoBehaviour
     private bool wearing;
     [SerializeField]
     Transform wearingPlace;
+    [SerializeField]
+    Sprite icon;
     
     // Start is called before the first frame update
     void Start()
@@ -36,13 +38,18 @@ public class Pickable : MonoBehaviour
         if (!wearing)
         {
             this.gameObject.SetActive(false);
+            this.transform.SetParent(inventorySystem.transform);
+            this.transform.localPosition = Vector3.zero;
         }
         else
         {
             Wear();
         }
     }
-
+    public Sprite GetIcon()
+    {
+        return icon;
+    }
     public bool CheckAssotiatetUsable(Usable _usable)
     {
         if (_usable == assotiatedUsable)

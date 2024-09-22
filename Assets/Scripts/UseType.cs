@@ -16,7 +16,6 @@ public class UseType : MonoBehaviour
         }
     }
     
-    // Start is called before the first frame update
     void Start()
     {
         SetUsable();
@@ -24,7 +23,6 @@ public class UseType : MonoBehaviour
         usable.SetStopUsingAccesable(stopUsingAccesable);
     }
 
-    // Update is called once per frame
     void Update()
     {
         

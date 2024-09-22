@@ -61,4 +61,13 @@ public class AutoDoor : MonoBehaviour
             if ((doorModel.position - closePosition).magnitude <= 0.05) isClosed = true;
         }
     }
+
+    public void SetOpenDoorPosition(Transform _openDoorPosition)
+    {
+        openPosition = _openDoorPosition.position;
+    }
+    public void SetBaseOpenDoorPosition()
+    {
+        openPosition = openPositionTR.position;
+    }
 }

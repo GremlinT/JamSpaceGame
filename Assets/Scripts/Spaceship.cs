@@ -20,6 +20,10 @@ public class Spaceship : UseType
     private Quaternion specialRotation;
 
     [SerializeField]
+    CameraScript cam;
+    Transform camTR;
+
+    [SerializeField]
     SpaceshipMap map;
 
     Transform TR;
@@ -32,6 +36,14 @@ public class Spaceship : UseType
 
     [SerializeField]
     int taregetSceneNomber;
+
+    [SerializeField]
+    Material buttonEnabledMat, buttonDisabledMat;
+
+    [SerializeField]
+    Renderer OnOffButton, AutoTakeOffButton, AutoLandingButton, MapButton, JumpButton;
+
+    float distFromZero;
 
 
     public override void Use(CameraScript _cam)
@@ -46,23 +58,31 @@ public class Spaceship : UseType
         else
         {
             Debug.Log("Ключей нет");
-            //usable.StopUsing();
+            usable.StopUsing();
         }
     }
 
     void Start()
     {
         TR = transform;
+        camTR = cam.transform;
         SetUsable();
         stopUsingAccesable = true;
         usable.SetStopUsingAccesable(stopUsingAccesable);
         DontDestroyOnLoad(gameObject);
+        OnOffButton.material = buttonEnabledMat;
+        AutoTakeOffButton.material = buttonDisabledMat;
+        AutoLandingButton.material = buttonDisabledMat;
+        MapButton.material = buttonDisabledMat;
+        JumpButton.material = buttonDisabledMat;
     }
 
     void Update()
     {
         if (isActive)
         {
+            distFromZero = Vector3.Distance(Vector3.zero, TR.position);
+            ButtonMaterialChangeUpdate();
             MoveToPoint();
             if (isLanding)
             {
@@ -79,6 +99,10 @@ public class Spaceship : UseType
         }
     }
 
+    public void SetTargetScene(int _index)
+    {
+        taregetSceneNomber = _index;
+    }
     public void TurnSpaceShipOnOff()
     {
         switch (isActive)
@@ -91,10 +115,16 @@ public class Spaceship : UseType
                     takeOffPoint = hitInfo.collider.gameObject.GetComponent<landingBay>().GetTakeOffPosition();
                     isLanding = true;
                 }
+                else
+                {
+                    Debug.Log("No place for landing");
+                }
                 break;
             case false:
                 isActive = true;
                 stopUsingAccesable = false;
+                camTR.SetParent(TR);
+                cam.SetFollowOnOff(false);
                 usable.SetStopUsingAccesable(stopUsingAccesable);
                 moveTargetPoint = TR.position + TR.up * 0.5f;
                 map.ActivateMap();
@@ -181,6 +211,9 @@ public class Spaceship : UseType
             usable.SetStopUsingAccesable(stopUsingAccesable);
             isLanding = false;
             map.DeactivateMap();
+            camTR.SetParent(null);
+            cam.SetFollowOnOff(true);
+
         }
     }
 
@@ -237,7 +270,38 @@ public class Spaceship : UseType
     }
     public void Jump()
     {
-        map.DeactivateMap();
-        SceneManager.LoadScene(taregetSceneNomber);
+        if (isActive && distFromZero > 300f)
+        {
+            map.DeactivateMap();
+            SceneManager.LoadScene(taregetSceneNomber);
+        }
+    }
+
+    private void ButtonMaterialChangeUpdate()
+    {
+        if (isActive && !isMoving)
+        {
+            if (takeOffPoint != null)
+            {
+                AutoTakeOffButton.material = buttonEnabledMat;
+            }
+            if (landingPoint != null)
+            {
+                AutoLandingButton.material = buttonEnabledMat;
+            }
+            if (distFromZero > 300f)
+            {
+                JumpButton.material = buttonEnabledMat;
+            }
+            MapButton.material = buttonEnabledMat;
+        }
+        else
+        {
+            OnOffButton.material = buttonEnabledMat;
+            AutoTakeOffButton.material = buttonDisabledMat;
+            AutoLandingButton.material = buttonDisabledMat;
+            MapButton.material = buttonDisabledMat;
+            JumpButton.material = buttonDisabledMat;
+        }
     }
 }

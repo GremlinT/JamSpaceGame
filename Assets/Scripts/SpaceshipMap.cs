@@ -113,6 +113,7 @@ public class SpaceshipMap : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
+                Debug.Log(hit.collider.gameObject.name);
                 if (hit.collider.gameObject.name == "map")
                 {
                     targetTR.position = hit.point + spaceshipTR.up * 0.1f + targetUpDownPos;
