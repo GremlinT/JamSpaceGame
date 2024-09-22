@@ -20,6 +20,10 @@ public class Spaceship : UseType
     private Quaternion specialRotation;
 
     [SerializeField]
+    CameraScript cam;
+    Transform camTR;
+
+    [SerializeField]
     SpaceshipMap map;
 
     Transform TR;
@@ -54,13 +58,14 @@ public class Spaceship : UseType
         else
         {
             Debug.Log("Ключей нет");
-            //usable.StopUsing();
+            usable.StopUsing();
         }
     }
 
     void Start()
     {
         TR = transform;
+        camTR = cam.transform;
         SetUsable();
         stopUsingAccesable = true;
         usable.SetStopUsingAccesable(stopUsingAccesable);
@@ -118,6 +123,8 @@ public class Spaceship : UseType
             case false:
                 isActive = true;
                 stopUsingAccesable = false;
+                camTR.SetParent(TR);
+                cam.SetFollowOnOff(false);
                 usable.SetStopUsingAccesable(stopUsingAccesable);
                 moveTargetPoint = TR.position + TR.up * 0.5f;
                 map.ActivateMap();
@@ -204,6 +211,9 @@ public class Spaceship : UseType
             usable.SetStopUsingAccesable(stopUsingAccesable);
             isLanding = false;
             map.DeactivateMap();
+            camTR.SetParent(null);
+            cam.SetFollowOnOff(true);
+
         }
     }
 

@@ -8,16 +8,19 @@ public class CameraScript : MonoBehaviour
     [SerializeField]
     private CameraTargetScript cameraTarget;
 
+    bool isFollow;
+
     void Start()
     {
         TR = transform;
         SetCameraTarget(cameraTarget);
         DontDestroyOnLoad(gameObject);
+        isFollow = true;
     }
 
     void Update()
     {
-        CameraFollow();
+        if (isFollow) CameraFollow();
     }
 
     public void SetCameraTarget(CameraTargetScript _cameraTarget)
@@ -36,5 +39,10 @@ public class CameraScript : MonoBehaviour
     {
         TR.position = cameraTarget.cameraPoint.position;
         TR.rotation = cameraTarget.cameraPoint.rotation;
+    }
+
+    public void SetFollowOnOff(bool _isFollow)
+    {
+        isFollow = _isFollow;
     }
 }

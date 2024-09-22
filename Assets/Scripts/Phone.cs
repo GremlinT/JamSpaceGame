@@ -26,13 +26,13 @@ public class Phone : UseType
 
     private string[] dialogTexts = new string[]
     {
-        "Привет! Вы детектив, да? Можете нам помочь?",
-        "Да, что у вас случилось?",
-        "У нас пропала кошка! Самая любимая!",
-        "Как это произошло?",
-        "Мы были в путешествии по галактике,  она где то потерялась.",
-        "Я найду ее! Пришлите мне ее фото и ваш маршрут.",
-        "Спасибо! Все выслал на почту!"
+        "Hi! You're a detective, right? Can you help us?",
+        "Yes, what happened to you?",
+        "Our cat is missing! Our favorite one!",
+        "How did this happen?",
+        "We were on a journey through the galaxy, she got lost somewhere.",
+        "I will find her! Send me her photo and your route.",
+        "Thank you! I sent everything by email!"
     };
 
     public override void Use(CameraScript _cam)
@@ -48,6 +48,10 @@ public class Phone : UseType
             usable.SetAssotiatedUsingAccesable(stopUsingAccesable);
             usable.SetStopUsingAccesable(stopUsingAccesable);
             StartCoroutine(PhoneDialog(dialogTexts));
+        }
+        else
+        {
+            usable.StopUsing();
         }
     }
     

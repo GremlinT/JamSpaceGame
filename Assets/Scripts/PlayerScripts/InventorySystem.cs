@@ -10,14 +10,12 @@ public class InventorySystem : MonoBehaviour
     Image[] iconsPlaces;
     [SerializeField]
     Text ItemInfo;
-    
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -69,5 +67,31 @@ public class InventorySystem : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void GetItem(int _ID, Transform pointForItem)
+    {
+        foreach (var item in itemsInInventory)
+        {
+            if (item.itemID == _ID)
+            {
+                item.gameObject.SetActive(true);
+                item.gameObject.transform.position = pointForItem.position;
+                item.gameObject.transform.rotation = pointForItem.rotation;
+                break;
+            }
+        }
+    }
+
+    public void HideItem(int _ID)
+    {
+        foreach (var item in itemsInInventory)
+        {
+            if (item.itemID == _ID)
+            {
+                item.gameObject.SetActive(false);
+                break;
+            }
+        }
     }
 }
