@@ -22,15 +22,14 @@ public class AlienMove : MonoBehaviour
         TR = transform;
     }
 
-    public void PointerClickMove(PointerEventData _pointer)
+    /*public void PointerClickMove(PointerEventData _pointer)
     {
         Debug.Log("click");
         MoveToDestination(_pointer.pointerCurrentRaycast.worldPosition);
-    }
+    }*/
 
     public void MoveToDestination(Vector3 _destination)
     {
-        Debug.Log("set destanation");
         destination = _destination;
         agent.SetDestination(destination);
         isMoving = true;

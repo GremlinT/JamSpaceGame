@@ -8,10 +8,10 @@ public class AlienWalkableSurface : MonoBehaviour
     void Start()
     {
         EventTrigger trigger = GetComponent<EventTrigger>();
-        AlienMove alien = FindObjectOfType<AlienMove>();
+        UserController controller = FindObjectOfType<UserController>();
         EventTrigger.Entry entry = new EventTrigger.Entry();
         entry.eventID = EventTriggerType.PointerClick;
-        entry.callback.AddListener((data) => { alien.PointerClickMove((PointerEventData)data); });
+        entry.callback.AddListener((data) => { controller.PointerClickMove((PointerEventData)data); });
         trigger.triggers.Add(entry);
     }
 }
