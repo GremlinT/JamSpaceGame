@@ -9,32 +9,32 @@ using UnityEngine.UIElements;
 public class PlayerMovment : MonoBehaviour
 {
     [SerializeField]
-    NavMeshAgent agent;
+    NavMeshAgent agent; //агент навигации - нужен
     [SerializeField]
-    CameraScript cam;
+    CameraScript cam; //камера, отдельное поведение
 
-    private CameraTargetScript cts;
-    private bool camTargetAtPlayer;
-
-    [SerializeField]
-    Animator anim;
-
-    Transform TR;
-
-    public bool focusedOnItem;
-
-    private Usable currentUsable;
-    [SerializeField]
-    private Pickable currentPickable;
+    private CameraTargetScript cts; //место куда убедт фокусироватьсякамера когда на игрока, отдельно
+    private bool camTargetAtPlayer; //флаг что камера смотрит на игрока, отдельно
 
     [SerializeField]
-    Transform spaceshipTR;
+    Animator anim; //анимато, нужен
 
-    Text dialogText;
+    Transform TR; //трансформ игрока, ?
 
-    bool storyEnd;
+    public bool focusedOnItem;//информация что смотрит на объект, отдельно
 
-    private string[] endDialog = new string[]
+    private Usable currentUsable; //текущий предмет, который использую, пытаюсь использовать, отдельно
+    [SerializeField]
+    private Pickable currentPickable; //аналогично но подбираемый, отдельно
+
+    [SerializeField]
+    Transform spaceshipTR; //трансформ корабля для финального диалога - отдельно
+
+    Text dialogText; //оконо для текста диалогов - отделно
+
+    bool storyEnd; //флаг что история окончилась - отдельно
+
+    private string[] endDialog = new string[] //текст финального диалога - отдельно
     {
         "Привет! Это снова мы, твои клиенты!",
         "Да, слушаю.",
@@ -60,7 +60,7 @@ public class PlayerMovment : MonoBehaviour
 
     }
 
-    void Update()
+    private void MoveAnimation()
     {
         if (agent.velocity != Vector3.zero)
         {
@@ -70,6 +70,10 @@ public class PlayerMovment : MonoBehaviour
         {
             anim.SetBool("isMove", false);
         }
+    }
+    void Update()
+    {
+        MoveAnimation();
         if (!focusedOnItem)
         {
             if (currentUsable && (TR.position - currentUsable.GetUsePosition()).magnitude <= 0.1f)
@@ -108,7 +112,7 @@ public class PlayerMovment : MonoBehaviour
         }
     }
 
-    private IEnumerator EndDialog(string[] dialog)
+    private IEnumerator EndDialog(string[] dialog) //корутина финалього диалога - отдельно
     {
         for (int i = 0; i < dialog.Length; i++)
         {
@@ -124,7 +128,7 @@ public class PlayerMovment : MonoBehaviour
         }
     }
 
-    public void MoveToPointer(BaseEventData _pointer) 
+    public void MoveToPointer(BaseEventData _pointer) //метод, заставляющий двишаться к месту клика, нужно 
     {
         if (!focusedOnItem)
         {
@@ -135,7 +139,7 @@ public class PlayerMovment : MonoBehaviour
         }
     }
 
-    public void InteractWithObject(Usable _usable)
+    public void InteractWithObject(Usable _usable) //метод взаимодействия с объекто или движания к нему, отдельно в части взаимодействя
     {
         if (!focusedOnItem)
         {
@@ -155,7 +159,7 @@ public class PlayerMovment : MonoBehaviour
         }
     }
 
-    public void MoveToObject(Pickable _pickable)
+    public void MoveToObject(Pickable _pickable) //метод аналогичен предыдущему но для подбираемых, нужность аналогично тому что выше
     {
         if (!focusedOnItem)
         {
@@ -171,7 +175,7 @@ public class PlayerMovment : MonoBehaviour
         }
     }
 
-    public void StopFocusing()
+    public void StopFocusing() //снятие фокусировки с объекта, отдельно
     {
         focusedOnItem = false;
         currentUsable = null;
@@ -179,11 +183,11 @@ public class PlayerMovment : MonoBehaviour
         camTargetAtPlayer = true;
     }
 
-    public void StopUseNavMesh()
+    public void StopUseNavMesh() //прекращение использования навмеша, ?
     {
         agent.enabled = false;
     }
-    public void StartUseNavMesh()
+    public void StartUseNavMesh() //начало использования навмеша, ?
     {
         if (!agent.enabled)
         {
@@ -191,7 +195,7 @@ public class PlayerMovment : MonoBehaviour
         }
     }
 
-    public void StopMove(bool isStop)
+    public void StopMove(bool isStop) //постановка текущего движения на паузу, нужен
     {
         agent.isStopped = isStop;
     }
