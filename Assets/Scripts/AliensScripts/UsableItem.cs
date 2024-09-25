@@ -8,12 +8,16 @@ public class UsableItem : MonoBehaviour
     [SerializeField]
     string itemName;
     [SerializeField]
-    private Transform usePoint;
+    private Transform usePoint, operationalPoint;
     [SerializeField]
     private float minUseDistance;
-    public bool canStopUseManualy;
 
-    void Start()
+    private bool canStopUseManualy;
+    private bool isUsed;
+    
+    private Alien user;
+
+    private void AddClickEventTrigger()
     {
         EventTrigger trigger = GetComponent<EventTrigger>();
         UserController controller = FindObjectOfType<UserController>();
@@ -21,6 +25,12 @@ public class UsableItem : MonoBehaviour
         entry.eventID = EventTriggerType.PointerClick;
         entry.callback.AddListener((data) => { controller.PointerClickSetUseItem(this); });
         trigger.triggers.Add(entry);
+    }
+
+    void Start()
+    {
+        AddClickEventTrigger();
+        canStopUseManualy = true;
     }
 
     public Vector3 GetUsePoint()
@@ -34,19 +44,71 @@ public class UsableItem : MonoBehaviour
         else return false;
     }
 
-    public void Use()
+    public bool StartUse(Alien _user)
     {
-        Debug.Log("Use " + itemName);
+        if (!isUsed && user == null)
+        {
+            isUsed = true;
+            user = _user;
+            return true;
+        }
+        else
+        {
+            Debug.Log(itemName + " is busy");
+            return false;
+        }
     }
     
-    public void StopUse()
+    public bool StopUse(Alien _user)
     {
-        Debug.Log("Stop using " + itemName);
+        if (isUsed)
+        {
+            if (user != _user)
+            {
+                Debug.Log(itemName + " is used by another user");
+                return true;
+            }
+            else
+            {
+                if (canStopUseManualy)
+                {
+                    user = null;
+                    isUsed = false;
+                    return true;
+                }
+                else
+                {
+                    Debug.Log("Cant stop use " + itemName + " manualy");
+                    return false;
+                }
+            }
+        }
+        else
+        {
+            Debug.Log(itemName + " is not used");
+            return true;
+        }
     }
-    
 
+    bool min = true;
+    public virtual void InternalUse()
+    {
+        if (isUsed)
+        {
+            if (transform.localScale.x > 0.5f && min) transform.localScale = transform.localScale + -Vector3.one * Time.deltaTime;
+            if (transform.localScale.x <= 0.5f) { min = false; }
+            if (transform.localScale.x < 1f && !min) transform.localScale = transform.localScale + Vector3.one * Time.deltaTime;
+            if (transform.localScale.x >= 1f) { min = true; }
+        }
+        else
+        {
+            if (transform.localScale.x < 1f) transform.localScale = transform.localScale + Vector3.one * Time.deltaTime;
+            if (transform.localScale.x >= 1f) { min = true; }
+        }
+    } 
+    
     void Update()
     {
-        
+        InternalUse();
     }
 }

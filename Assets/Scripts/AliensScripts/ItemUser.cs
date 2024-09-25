@@ -19,24 +19,24 @@ public class ItemUser : MonoBehaviour
         currentUseItem = usableItem;
     }
 
-    public bool CanStopUseItem()
+    /*public bool CanStopUseItem()
     {
         if (currentUseItem.canStopUseManualy) return true;
         else return false;
-    }
+    }*/
 
     private void UseItem(UsableItem item)
     {
         isUse = true;
-        item.Use();
+        //item.Use();
     }
 
-    public void StopUseItem()
+    /*public void StopUseItem()
     {
         currentUseItem.StopUse();
         isUse = false;
         currentUseItem = null;
-    }
+    }*/
 
     void Update()
     {

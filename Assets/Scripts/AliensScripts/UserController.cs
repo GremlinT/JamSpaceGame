@@ -4,52 +4,32 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UserController : MonoBehaviour
+public class UserController : AbstractBrain
 {
-    private AlienMove move;
-    private ItemUser itemUser;
-
-    private bool isMoveAccesable;
+    private AlienStateMashine stateMashine;
 
     void Start()
     {
-        move = GetComponent<AlienMove>();
-        itemUser = GetComponent<ItemUser>();
+        stateMashine = GetComponent<AlienStateMashine>();
     }
 
     public void PointerClickMove(PointerEventData _pointer)
     {
-        StartMove(_pointer.pointerCurrentRaycast.worldPosition);
+        stateMashine.SetDestination(_pointer.pointerCurrentRaycast.worldPosition);
     }
 
     public void PointerClickSetUseItem(UsableItem item)
     {
-        StartMove(item.GetUsePoint());
-        if (isMoveAccesable) itemUser.SetUseItem(item);
+        stateMashine.UseItem(item);
     }
 
-    private void StartMove(Vector3 movePoint)
+    public void StopMovement()
     {
-        if (!itemUser.isUse)
-        {
-            move.MoveToDestination(movePoint);
-            isMoveAccesable = true;
-        }
-        else if (itemUser.CanStopUseItem())
-        {
-            itemUser.StopUseItem();
-            move.MoveToDestination(movePoint);
-            isMoveAccesable = true;
-        }
-        else
-        {
-            isMoveAccesable = false;
-            Debug.Log("Cant move");
-        }
+        stateMashine.SetDestination(Vector3.zero);
     }
 
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.X)) StopMovement();
     }
 }
