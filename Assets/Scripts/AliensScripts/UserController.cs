@@ -4,7 +4,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UserController : AbstractBrain
+public class UserController : MonoBehaviour
 {
     private AlienStateMashine stateMashine;
 
