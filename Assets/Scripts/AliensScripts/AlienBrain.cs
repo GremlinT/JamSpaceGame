@@ -7,7 +7,7 @@ public enum BrainState
     work,
     rest
 }
-public class AlienBrain : AbstractBrain
+public class AlienBrain : MonoBehaviour
 {
     private AlienStateMashine stateMashine;
 

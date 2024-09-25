@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &75186704
 Transform:
   m_ObjectHideFlags: 0
@@ -245,19 +245,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5720523620859470875}
-          m_TargetAssemblyTypeName: Spaceship, Assembly-CSharp
-          m_MethodName: SetTargetScene
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 2
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &161762917
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &417405248
 Transform:
   m_ObjectHideFlags: 0
@@ -702,19 +690,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5720523620859470875}
-          m_TargetAssemblyTypeName: Spaceship, Assembly-CSharp
-          m_MethodName: SetTargetScene
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 3
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &444630000
 GameObject:
   m_ObjectHideFlags: 0
@@ -2810,6 +2786,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6414ec7cc00e6c74d91a4611433a8df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
+  destination: {x: 0, y: 0, z: 0}
+  currentItem: {fileID: 0}
   minDestination: 0.5
 --- !u!114 &1690734604
 MonoBehaviour:
@@ -3169,7 +3148,7 @@ Transform:
   m_GameObject: {fileID: 1858803782}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.38, y: 0, z: -0.05}
+  m_LocalPosition: {x: -5.04, y: 0, z: -0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3512,7 +3491,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2016221061
 Transform:
   m_ObjectHideFlags: 0
@@ -3616,19 +3595,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5720523620859470875}
-          m_TargetAssemblyTypeName: Spaceship, Assembly-CSharp
-          m_MethodName: SetTargetScene
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 1
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &2016316862
 GameObject:
   m_ObjectHideFlags: 0
@@ -3984,7 +3951,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &40803047867997065
 GameObject:
   m_ObjectHideFlags: 0
@@ -6779,7 +6746,7 @@ Transform:
   m_GameObject: {fileID: 5720523620859470868}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 17.3}
+  m_LocalPosition: {x: 33.98, y: 0, z: 23.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7080,6 +7047,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6414ec7cc00e6c74d91a4611433a8df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
+  destination: {x: 0, y: 0, z: 0}
+  currentItem: {fileID: 0}
   minDestination: 0.5
 --- !u!114 &5234663357299041256
 MonoBehaviour:
@@ -7248,10 +7218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4911370282960109230}
   - component: {fileID: 5720523620859470872}
-  - component: {fileID: 5720523620859470873}
   - component: {fileID: 5720523620859470874}
-  - component: {fileID: 5720523620859470876}
-  - component: {fileID: 5720523620859470875}
   - component: {fileID: 5720523620859470877}
   - component: {fileID: 5720523620859470878}
   m_Layer: 0
@@ -7284,19 +7251,6 @@ CapsuleCollider:
   m_Height: 7.0110884
   m_Direction: 1
   m_Center: {x: -0.0064911842, y: 1.4151368, z: 0}
---- !u!114 &5720523620859470873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5720523620859470868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9e6f870dc806b846b915e9d0542a49d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraPoint: {fileID: 161762918}
 --- !u!208 &5720523620859470874
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7313,59 +7267,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 1.44, z: 0}
   m_TimeToStationary: 0.5
---- !u!114 &5720523620859470875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5720523620859470868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d69e22963fd667489764731f4ebed2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopUsingAccesable: 0
-  invetory: {fileID: 288973300838291855}
-  playerTR: {fileID: 3067751102851887572}
-  playerM: {fileID: 3109495341897351409}
-  playerPlace: {fileID: 1906054192}
-  isActive: 0
-  isLanding: 0
-  isMoving: 0
-  isTakeOff: 0
-  isMoveToLanding: 0
-  isRotating: 0
-  isSpecialRotation: 0
-  cam: {fileID: 1672034208788136744}
-  map: {fileID: 5720523620859470878}
-  maxSpeed: 100
-  takeOffPoint: {fileID: 731814759}
-  landingPoint: {fileID: 1808237084}
-  taregetSceneNomber: 1
-  buttonEnabledMat: {fileID: 2100000, guid: f51561c0501c70447b9d9e7532ffdf84, type: 2}
-  buttonDisabledMat: {fileID: 2100000, guid: e43e54e02c722444d8ff7d2694882965, type: 2}
-  OnOffButton: {fileID: 7577682904143976222}
-  AutoTakeOffButton: {fileID: 7787113989542309400}
-  AutoLandingButton: {fileID: 8182896655355490882}
-  MapButton: {fileID: 2530383607755593424}
-  JumpButton: {fileID: 2343527228648221081}
---- !u!114 &5720523620859470876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5720523620859470868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efa00893fbaf3a1449b061a12df9dd02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointForUse: {fileID: 1858803783}
-  useType: {fileID: 5720523620859470875}
-  assotiatedUsable: {fileID: 0}
-  stopUsingAccesable: 0
 --- !u!114 &5720523620859470877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7382,19 +7283,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3109495341897351409}
-          m_TargetAssemblyTypeName: PlayerMovment, Assembly-CSharp
-          m_MethodName: InteractWithObject
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 5720523620859470876}
-            m_ObjectArgumentAssemblyTypeName: Usable, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!114 &5720523620859470878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7404,14 +7293,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5720523620859470868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ea7c4b0d3f1b6d4a86e0e9cc5f08b05, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bb5b8bbd205b9d4bb0f15b786f72234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPlaceIcon: {fileID: 473464183}
-  mapZeroCoordPlace: {fileID: 1806808900}
-  spaceshipTR: {fileID: 4911370282960109230}
-  spaceship: {fileID: 5720523620859470875}
-  isMapTargetinActive: 0
+  itemName: "\u041A\u043E\u0441\u043C\u043E\u043B\u0435\u0442"
+  usePoint: {fileID: 1858803783}
+  operationalPoint: {fileID: 0}
+  minUseDistance: 0.5
+  upDoor: {fileID: 6627388688064422619}
+  downDoor: {fileID: 5621724926243244552}
 --- !u!114 &5723789740593083344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7759,13 +7649,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5035511770042307535}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -2.22837, y: 2.28857, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4911370282960109230}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &6659839639027752447
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8400,19 +8290,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5720523620859470875}
-          m_TargetAssemblyTypeName: Spaceship, Assembly-CSharp
-          m_MethodName: Jump
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!65 &7126188589826981060
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8789,19 +8667,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5720523620859470875}
-          m_TargetAssemblyTypeName: Spaceship, Assembly-CSharp
-          m_MethodName: AutoTakeOff
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!65 &7787113989542309402
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9369,19 +9235,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5720523620859470875}
-          m_TargetAssemblyTypeName: Spaceship, Assembly-CSharp
-          m_MethodName: TurnSpaceShipOnOff
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!65 &8799831736444290640
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9587,19 +9441,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5720523620859470875}
-          m_TargetAssemblyTypeName: Spaceship, Assembly-CSharp
-          m_MethodName: AutoLanding
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!65 &8968727112215749127
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9866,19 +9708,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5720523620859470878}
-          m_TargetAssemblyTypeName: SpaceshipMap, Assembly-CSharp
-          m_MethodName: TargetOnMapActivate
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!65 &9000746029885776405
 BoxCollider:
   m_ObjectHideFlags: 0

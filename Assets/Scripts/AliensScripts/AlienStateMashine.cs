@@ -16,8 +16,11 @@ public class AlienStateMashine : MonoBehaviour
 {
     private Alien alien;
     private Transform alienTR;
+    [SerializeField]
     private AlienState currentState; //текущий статус
+    [SerializeField]
     private Vector3 destination; //место, куда надо двигаться
+    [SerializeField]
     private UsableItem currentItem; //текущий предмет, с которым надо что то делать
     
     [SerializeField]
@@ -78,6 +81,11 @@ public class AlienStateMashine : MonoBehaviour
                     currentState = AlienState.idle;
                     break;
                 }
+                else if (destination != Vector3.zero)
+                {
+                    currentState = AlienState.move;
+                    break;
+                }
                 break;
             default:
                 break;
@@ -91,8 +99,15 @@ public class AlienStateMashine : MonoBehaviour
     }
     public void UseItem(UsableItem _item)
     {
-        currentItem = _item;
-        destination = currentItem.GetUsePoint();
+        if (currentItem != _item)
+        {
+            StopUseItem();
+        }
+        if (!currentItem)
+        {
+            currentItem = _item;
+            destination = currentItem.GetUsePoint();
+        }
     }
     public void StopUseItem()
     {

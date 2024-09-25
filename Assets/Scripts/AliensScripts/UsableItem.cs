@@ -12,12 +12,12 @@ public class UsableItem : MonoBehaviour
     [SerializeField]
     private float minUseDistance;
 
-    private bool canStopUseManualy;
-    private bool isUsed;
+    protected bool canStopUseManualy;
+    protected bool isUsed;
     
     private Alien user;
 
-    private void AddClickEventTrigger()
+    protected void AddClickEventTrigger()
     {
         EventTrigger trigger = GetComponent<EventTrigger>();
         UserController controller = FindObjectOfType<UserController>();
@@ -91,7 +91,7 @@ public class UsableItem : MonoBehaviour
     }
 
     bool min = true;
-    public virtual void InternalUse()
+    protected virtual void InternalUse()
     {
         if (isUsed)
         {
