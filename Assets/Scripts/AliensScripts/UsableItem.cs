@@ -12,8 +12,9 @@ public class UsableItem : MonoBehaviour
     [SerializeField]
     private float minUseDistance;
 
-    protected bool canStopUseManualy;
-    protected bool isUsed;
+    protected bool canStopUseManualy, hasStopUsingProcedure;
+    [SerializeField]
+    protected bool isUsed, isStopUsing;
     
     protected Alien user;
 
@@ -31,6 +32,7 @@ public class UsableItem : MonoBehaviour
     {
         AddClickEventTrigger();
         canStopUseManualy = true;
+        hasStopUsingProcedure = false;
     }
 
     public Vector3 GetUsePoint()
@@ -72,9 +74,16 @@ public class UsableItem : MonoBehaviour
             {
                 if (canStopUseManualy)
                 {
-                    user = null;
-                    isUsed = false;
-                    return true;
+                    if (!hasStopUsingProcedure)
+                    {
+                        isStopUsing = false;
+                        user = null;
+                        isUsed = false;
+                        return true;
+                    }
+                    isStopUsing = true;
+                    Debug.Log("Begin stoping procedure for " + itemName);
+                    return false;
                 }
                 else
                 {
