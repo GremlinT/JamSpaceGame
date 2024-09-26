@@ -8,14 +8,14 @@ public class UsableItem : MonoBehaviour
     [SerializeField]
     string itemName;
     [SerializeField]
-    private Transform usePoint, operationalPoint;
+    protected Transform usePoint, operationalPoint;
     [SerializeField]
     private float minUseDistance;
 
     protected bool canStopUseManualy;
     protected bool isUsed;
     
-    private Alien user;
+    protected Alien user;
 
     protected void AddClickEventTrigger()
     {
