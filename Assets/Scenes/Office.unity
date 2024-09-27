@@ -961,7 +961,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.35
-  m_Speed: 3
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 280
@@ -1977,6 +1977,8 @@ MonoBehaviour:
   usePoint: {fileID: 1459391987}
   operationalPoint: {fileID: 774339}
   minUseDistance: 0.5
+  isUsed: 0
+  isStopUsing: 0
   upDoor: {fileID: 59122230}
   downDoor: {fileID: 1241744478}
   pathPoint1: {fileID: 1781343356}
@@ -2855,6 +2857,8 @@ MonoBehaviour:
   usePoint: {fileID: 982054128}
   operationalPoint: {fileID: 1998975239}
   minUseDistance: 0.5
+  isUsed: 0
+  isStopUsing: 0
   upDoor: {fileID: 262771178}
   downDoor: {fileID: 398154599}
   pathPoint1: {fileID: 1066986896}
@@ -3513,7 +3517,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.35
-  m_Speed: 3
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 280
@@ -9277,6 +9281,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa16c01c932b8824d9b621913457b6b0, type: 3}
+--- !u!1 &1634107007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1634107008}
+  m_Layer: 0
+  m_Name: camerPoint 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1634107008
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634107007}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -5.590002, y: 1.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5778640910125027608}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1647038482
 GameObject:
   m_ObjectHideFlags: 0
@@ -9672,7 +9707,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.35
-  m_Speed: 3
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 280
@@ -10277,6 +10312,8 @@ MonoBehaviour:
   usePoint: {fileID: 812142237}
   operationalPoint: {fileID: 1304137206}
   minUseDistance: 0.5
+  isUsed: 0
+  isStopUsing: 0
   upDoor: {fileID: 1143972929}
   downDoor: {fileID: 613098667}
   pathPoint1: {fileID: 1677548557}
@@ -15716,6 +15753,7 @@ GameObject:
   - component: {fileID: 6105182224905561413}
   - component: {fileID: 2624439980467369255}
   - component: {fileID: 1471969891765609195}
+  - component: {fileID: 6105182224905561414}
   m_Layer: 0
   m_Name: "\u041A\u043D\u043E\u043F\u043A\u0430 \u0440\u0443\u0447\u043D\u043E\u0435"
   m_TagString: Untagged
@@ -17010,8 +17048,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7340500711721593137}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24585153, y: -0.0014539568, z: 0.00036876736, w: 0.96930635}
-  m_LocalPosition: {x: 39.694603, y: 25.069262, z: -14.708977}
+  m_LocalRotation: {x: 0.32545242, y: -0.0070910263, z: 0.002442054, w: 0.9455287}
+  m_LocalPosition: {x: 40.61191, y: 17.57912, z: -6.3735647}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17199,7 +17237,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.35
-  m_Speed: 3
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 280
@@ -17632,6 +17670,8 @@ MonoBehaviour:
   usePoint: {fileID: 1858803783}
   operationalPoint: {fileID: 0}
   minUseDistance: 0.5
+  isUsed: 0
+  isStopUsing: 0
   upDoor: {fileID: 6627388688064422619}
   downDoor: {fileID: 5621724926243244552}
   pathPoint1: {fileID: 0}
@@ -17737,6 +17777,7 @@ Transform:
   - {fileID: 5525283883601444198}
   - {fileID: 8528547089917155233}
   - {fileID: 1555339136}
+  - {fileID: 1634107008}
   - {fileID: 169189993}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -2.052, z: 0}
@@ -17949,6 +17990,27 @@ Transform:
   - {fileID: 3392859179018140382}
   m_Father: {fileID: 8528547089917155233}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6105182224905561414
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3340490230353327050}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.12101669, y: 0.12101669, z: 0.12101669}
+  m_Center: {x: 0.0000038146973, y: 0, z: 0}
 --- !u!23 &6107138219628945933
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18266,10 +18328,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb5b8bbd205b9d4bb0f15b786f72234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: "\u041C\u043E\u0439 \u043A\u043E\u0441\u043C\u043E\u043B\u0435\u0442"
   usePoint: {fileID: 1555339136}
   operationalPoint: {fileID: 169189993}
   minUseDistance: 0.5
+  isUsed: 0
+  isStopUsing: 0
   upDoor: {fileID: 5755702506490449261}
   downDoor: {fileID: 6493358348422211006}
   pathPoint1: {fileID: 1235255623}
@@ -20368,6 +20432,8 @@ MonoBehaviour:
   usePoint: {fileID: 1801234580}
   operationalPoint: {fileID: 0}
   minUseDistance: 0.5
+  isUsed: 0
+  isStopUsing: 0
 --- !u!114 &8720959404280622346
 MonoBehaviour:
   m_ObjectHideFlags: 0
