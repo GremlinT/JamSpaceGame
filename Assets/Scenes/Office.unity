@@ -1981,8 +1981,12 @@ MonoBehaviour:
   isStopUsing: 0
   upDoor: {fileID: 59122230}
   downDoor: {fileID: 1241744478}
+  camera: {fileID: 0}
   pathPoint1: {fileID: 1781343356}
   pathPoint2: {fileID: 1778494701}
+  cameraPoint1: {fileID: 0}
+  cameraPoint2: {fileID: 0}
+  exitCameraPoint: {fileID: 0}
   doorsIsOpen: 0
   userGoInside: 0
   userInside: 0
@@ -2861,8 +2865,12 @@ MonoBehaviour:
   isStopUsing: 0
   upDoor: {fileID: 262771178}
   downDoor: {fileID: 398154599}
+  camera: {fileID: 0}
   pathPoint1: {fileID: 1066986896}
   pathPoint2: {fileID: 1453035753}
+  cameraPoint1: {fileID: 0}
+  cameraPoint2: {fileID: 0}
+  exitCameraPoint: {fileID: 0}
   doorsIsOpen: 0
   userGoInside: 0
   userInside: 0
@@ -8882,6 +8890,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 360147888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1480279609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1480279610}
+  m_Layer: 0
+  m_Name: cameraPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1480279610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480279609}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: 3.6, z: -4.375435}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4895010624148371800}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &1523839737
 GameObject:
   m_ObjectHideFlags: 0
@@ -10316,8 +10355,12 @@ MonoBehaviour:
   isStopUsing: 0
   upDoor: {fileID: 1143972929}
   downDoor: {fileID: 613098667}
+  camera: {fileID: 0}
   pathPoint1: {fileID: 1677548557}
   pathPoint2: {fileID: 106624195}
+  cameraPoint1: {fileID: 0}
+  cameraPoint2: {fileID: 0}
+  exitCameraPoint: {fileID: 0}
   doorsIsOpen: 0
   userGoInside: 0
   userInside: 0
@@ -10412,6 +10455,37 @@ Transform:
   - {fileID: 809204519}
   m_Father: {fileID: 944279584}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1737407469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1737407470}
+  m_Layer: 0
+  m_Name: camerPoint 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1737407470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737407469}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.18480457, y: -0.006861058, z: 0.0012902105, w: 0.9827505}
+  m_LocalPosition: {x: 0, y: 2.76, z: -0.55534446}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5778640910125027608}
+  m_LocalEulerAnglesHint: {x: 21.3, y: -0.8, z: 0}
 --- !u!1 &1778494700
 GameObject:
   m_ObjectHideFlags: 0
@@ -12334,6 +12408,37 @@ Transform:
   - {fileID: 1198190571}
   m_Father: {fileID: 674788382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2030556994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2030556995}
+  m_Layer: 0
+  m_Name: exitCameraPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2030556995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030556994}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.045316722, y: 0.70565325, z: -0.045316745, w: 0.7056532}
+  m_LocalPosition: {x: -9.2, y: 2.37, z: 0.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5778640910125027608}
+  m_LocalEulerAnglesHint: {x: 7.349, y: 90, z: 0}
 --- !u!1 &2032774998
 GameObject:
   m_ObjectHideFlags: 0
@@ -16866,6 +16971,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1480279610}
   - {fileID: 8342059632480283492}
   - {fileID: 7036710537670096076}
   m_Father: {fileID: 0}
@@ -17048,8 +17154,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7340500711721593137}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.32545242, y: -0.0070910263, z: 0.002442054, w: 0.9455287}
-  m_LocalPosition: {x: 40.61191, y: 17.57912, z: -6.3735647}
+  m_LocalRotation: {x: 0.18487264, y: -0.024466295, z: 0.0046042404, w: 0.98244715}
+  m_LocalPosition: {x: 52.38973, y: 2.7680645, z: 6.8229175}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17674,8 +17780,12 @@ MonoBehaviour:
   isStopUsing: 0
   upDoor: {fileID: 6627388688064422619}
   downDoor: {fileID: 5621724926243244552}
+  camera: {fileID: 0}
   pathPoint1: {fileID: 0}
   pathPoint2: {fileID: 0}
+  cameraPoint1: {fileID: 0}
+  cameraPoint2: {fileID: 0}
+  exitCameraPoint: {fileID: 0}
   doorsIsOpen: 0
   userGoInside: 0
   userInside: 0
@@ -17778,6 +17888,8 @@ Transform:
   - {fileID: 8528547089917155233}
   - {fileID: 1555339136}
   - {fileID: 1634107008}
+  - {fileID: 2030556995}
+  - {fileID: 1737407470}
   - {fileID: 169189993}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -2.052, z: 0}
@@ -18336,8 +18448,12 @@ MonoBehaviour:
   isStopUsing: 0
   upDoor: {fileID: 5755702506490449261}
   downDoor: {fileID: 6493358348422211006}
+  camera: {fileID: 9033925720727329106}
   pathPoint1: {fileID: 1235255623}
   pathPoint2: {fileID: 1712040722}
+  cameraPoint1: {fileID: 1634107008}
+  cameraPoint2: {fileID: 1737407470}
+  exitCameraPoint: {fileID: 2030556995}
   doorsIsOpen: 0
   userGoInside: 0
   userInside: 0
@@ -19282,6 +19398,7 @@ GameObject:
   - component: {fileID: 7999043177020455635}
   - component: {fileID: 4245184323080286341}
   - component: {fileID: 1672034208788136744}
+  - component: {fileID: 9033925720727329106}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -21258,6 +21375,20 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &9033925720727329106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7340500711721593137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8587eca244236d044afb0a2face6f870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alien: {fileID: 5234663357299041256}
+  cameraPosition: {fileID: 1480279610}
 --- !u!114 &9044053039321577972
 MonoBehaviour:
   m_ObjectHideFlags: 0
