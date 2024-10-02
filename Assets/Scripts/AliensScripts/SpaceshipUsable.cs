@@ -13,7 +13,12 @@ public class SpaceshipUsable : UsableItem
     private Transform TR;
 
     [SerializeField]
+    private AlienCamera camera;
+
+    [SerializeField]
     Transform pathPoint1, pathPoint2;
+    [SerializeField]
+    Transform cameraPoint1, cameraPoint2, exitCameraPoint;
 
     //состояния
     [SerializeField]
@@ -83,10 +88,12 @@ public class SpaceshipUsable : UsableItem
                 if (Vector3.Distance(user.GetPosition(), pathPoint1.position) <= 0.1f)
                 {
                     user.ForceMove(pathPoint2.position);
+                    camera.SetCameraToPosition(cameraPoint1);
                 }
                 if (Vector3.Distance(user.GetPosition(), pathPoint2.position) <= 0.1f)
                 {
                     user.ForceMove(operationalPoint.position);
+                    camera.SetCameraToPosition(cameraPoint2);
                 }
                 if (Vector3.Distance(user.GetPosition(), operationalPoint.position) <= 0.1f)
                 {
@@ -119,16 +126,19 @@ public class SpaceshipUsable : UsableItem
                     user.ForceRotate(usePoint.position);
                     canStopUseManualy = false;
                     userGoInside = false;
+                    camera.SetCameraToPosition(cameraPoint1);
                 }
                 if (!userGoInside && userInside)
                 {
                     if (Vector3.Distance(user.GetPosition(), pathPoint2.position) <= 0.1f)
                     {
                         user.ForceMove(pathPoint1.position);
+                        
                     }
                     if (Vector3.Distance(user.GetPosition(), pathPoint1.position) <= 0.1f)
                     {
                         user.ForceMove(usePoint.position);
+                        camera.ClearCamera();
                     }
                     if (Vector3.Distance(user.GetPosition(), usePoint.position) <= 0.1f)
                     {
