@@ -39,6 +39,12 @@ public class AlienCamera : MonoBehaviour
     public void ClearCamera()
     {
         cameraIsBusy = false;
+        TR.SetParent(null);
+    }
+
+    public void SetcameraParent(Transform newParent)
+    {
+        TR.SetParent(newParent);
     }
         
     
