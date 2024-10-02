@@ -119,6 +119,7 @@ public class SpaceshipUsable : UsableItem
                     readyToFly = false;
                     DoorControl(upDoor, upDoorOpenRotation, -89, out doorsIsOpen, true);
                     DoorControl(downDoor, downDoorOpenRotation, 58, out doorsIsOpen, true);
+                    camera.SetCameraToPosition(exitCameraPoint);
                 }
                 if (userInside && userGoInside && doorsIsOpen)
                 {
@@ -126,7 +127,6 @@ public class SpaceshipUsable : UsableItem
                     user.ForceRotate(usePoint.position);
                     canStopUseManualy = false;
                     userGoInside = false;
-                    camera.SetCameraToPosition(cameraPoint1);
                 }
                 if (!userGoInside && userInside)
                 {
