@@ -44,6 +44,10 @@ public class SpaceshipUsable : UsableItem
     [SerializeField]
     private bool landing;
 
+    //таймеры
+    [SerializeField]
+    float timeBeforeTakeOff;
+
     void Start()
     {
         AddClickEventTrigger();
@@ -63,32 +67,7 @@ public class SpaceshipUsable : UsableItem
         downDoorOpenRotation = downDoor.localRotation;
         downDoor.localRotation = downDoorCloseRotation;
     }
-    private void StatusMonitorActive()
-    {
-        if (statusMonitorMoveFirst.activeSelf)
-        {
-            if (statusMonitorMoveTRFirst.localPosition.y < 1.838f)
-            {
-                statusMonitorMoveTRFirst.localPosition = statusMonitorMoveTRFirst.localPosition + -statusMonitorMoveTRFirst.up * Time.deltaTime * 0.1f;
-            }
-            else
-            {
-                statusMonitorMoveTRFirst.localPosition = new Vector3(statusMonitorMoveTRFirst.localPosition.x, 1.617f, statusMonitorMoveTRFirst.localPosition.z);
-            }
-        }
-        if (statusMonitorMoveSecond.activeSelf)
-        {
-            if (statusMonitorMoveTRSecond.localPosition.y < 1.838f)
-            {
-                statusMonitorMoveTRSecond.localPosition = statusMonitorMoveTRSecond.localPosition + -statusMonitorMoveTRSecond.up * Time.deltaTime * 0.1f;
-            }
-            else
-            {
-                statusMonitorMoveTRSecond.localPosition = new Vector3(statusMonitorMoveTRSecond.localPosition.x, 1.617f, statusMonitorMoveTRSecond.localPosition.z);
-            }
-        }
-    }
-
+    
     private void DoorControl(Transform door, Quaternion targetRotation, float angel, out bool doorState, bool open)
     {
         doorState = false;
@@ -118,7 +97,7 @@ public class SpaceshipUsable : UsableItem
                 leftMonitor.SetActive(true);
                 rightMonitor.SetActive(true);
                 statusMonitorMain.SetActive(true);
-                SetTargetPoint(TR.position + TR.up * 550f + TR.forward * 120f);
+                SetTargetPoint(TR.position + TR.up * 10f);
             }
             else
             {
@@ -336,7 +315,6 @@ public class SpaceshipUsable : UsableItem
         if (flying)
         {
             MoveToPoint();
-            StatusMonitorActive();
         }
             
         if (landing) Landing();

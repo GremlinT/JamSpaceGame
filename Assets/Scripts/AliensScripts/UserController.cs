@@ -23,6 +23,11 @@ public class UserController : MonoBehaviour
         stateMashine.UseItem(item);
     }
 
+    public void PointerClickSpaceship(Vector3 targetPosition)
+    {
+        stateMashine.SetDestination(targetPosition);
+    }
+
     public void StopMovement()
     {
         stateMashine.SetDestination(Vector3.zero);
